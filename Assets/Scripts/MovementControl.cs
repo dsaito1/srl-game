@@ -14,8 +14,8 @@ public class MovementControl : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // FixedUpdate is not called once per frame but at a constant rate based on time elapsed
+    void FixedUpdate()
     {
         moveCharacter();
     }
