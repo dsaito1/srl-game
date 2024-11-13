@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e3dcf99b9984f469af2f2707806a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_dead: 0
   moveSpeed: 2
 --- !u!95 &4332928220645198874
 Animator:
@@ -483,6 +484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 3693092623781432014}
+  DeadPlayer: {fileID: 2182739389249149683, guid: 09eb1a1c714ef6e4dae9abebc5c9cc81, type: 3}
+  GameOver: {fileID: 7514360008809505415, guid: bff73ee6f355c304abd945edb92a7b5a, type: 3}
   max_health: 100
   hp: 100
 --- !u!70 &1815903252262260483

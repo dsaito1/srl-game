@@ -5,11 +5,15 @@ using UnityEngine.UI;
 public class HealthTracker : MonoBehaviour
 {
     public GameObject healthbar;
+    public GameObject DeadPlayer;
+    public GameObject GameOver;
     public int max_health;
     public int hp;
+
+    MonoBehaviour player_controller;
     bool taking_damage;
-    Vector3 scaler;
     Image img;
+    bool is_dead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,8 +42,24 @@ public class HealthTracker : MonoBehaviour
 
     private void TakeDamage()
     {
-        this.hp -= 1;
-        this.UpdateBar(((float)this.hp) / ((float)this.max_health));
+        if (!is_dead)
+        {
+            this.hp -= 1;
+            this.UpdateBar(((float)this.hp) / ((float)this.max_health));
+            if (hp < 0)
+            {
+                is_dead = true;
+                Die();
+            }
+        }
+    }
+    void Die()
+    {
+        MovementControl move = gameObject.GetComponent<MovementControl>();
+        move.is_dead = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled= false;
+        Instantiate(DeadPlayer, gameObject.transform);
+        Instantiate(GameOver);
     }
 
     private void UpdateBar(float percentage)

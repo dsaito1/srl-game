@@ -5,6 +5,7 @@ public class MovementControl : MonoBehaviour
     Rigidbody2D rb;
     float vertical, horizontal;
     private Animator animator;
+    public bool is_dead = false;
 
     [SerializeField] float moveSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,7 +18,10 @@ public class MovementControl : MonoBehaviour
     // FixedUpdate is not called once per frame but at a constant rate based on time elapsed
     void FixedUpdate()
     {
-        moveCharacter();
+        if (!is_dead)
+        {
+            moveCharacter();
+        }
     }
 
     void moveCharacter()
